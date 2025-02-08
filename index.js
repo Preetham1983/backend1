@@ -13,9 +13,11 @@ app.use(express.json());
 
 // ✅ Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/SONGS", { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb+srv://bandipreethamreddy16:7JEzvLoIc0tSx522@cluster0.lttlf.mongodb.net/preetham?retryWrites=true&w=majority")
+  
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
+
 
 // ✅ Define Song Schema
 const songSchema = new mongoose.Schema({
@@ -33,10 +35,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-
-app.get("/", (req, res) => {
-  res.send("hiii hello");
-});
 
 // ✅ Upload Song API
 app.post("/api/songs/upload", upload.single("song"), async (req, res) => {
