@@ -13,7 +13,7 @@ app.use(express.json());
 
 // ✅ Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb://localhost:27017/SONGS", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
@@ -82,5 +82,5 @@ app.get("/api/songs/play/:id", async (req, res) => {
 });
 
 // ✅ Start Server
-const PORT = process.env.PORT || 5000;
+const PORT =  5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
