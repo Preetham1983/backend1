@@ -12,12 +12,15 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Connect to MongoDB
-mongoose
-  .connect("mongodb+srv://bandipreethamreddy16:7JEzvLoIc0tSx522@cluster0.lttlf.mongodb.net/preetham?retryWrites=true&w=majority")
+// mongoose
+//   .connect("mongodb+srv://bandipreethamreddy16:7JEzvLoIc0tSx522@cluster0.lttlf.mongodb.net/preetham?retryWrites=true&w=majority")
   
+//   .then(() => console.log("✅ MongoDB Connected"))
+//   .catch((err) => console.error("❌ MongoDB Error:", err));
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
-
 
 // ✅ Define Song Schema
 const songSchema = new mongoose.Schema({
