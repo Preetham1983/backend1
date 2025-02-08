@@ -34,6 +34,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+app.get("/", (req, res) => {
+  res.send("hiii hello");
+});
+
 // ✅ Upload Song API
 app.post("/api/songs/upload", upload.single("song"), async (req, res) => {
   try {
